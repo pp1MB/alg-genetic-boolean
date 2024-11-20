@@ -5,32 +5,24 @@
 #include <string.h>
 #include "agbinary.h"
 
-#define POP_MAX 10 // Indivíduos na população
+#define POP_MAX 100 // Indivíduos na população
 #define GEN_MAX 100 // Limite de gerações
 #define TERM_MAX 100 // Máximo de termos em uma única clausula.
-#define NUM_VAR 2 // Número de variáveis
-#define NUM_CLS 4 // Número de clausulas na equação 
+#define NUM_VAR 100 // Número de variáveis.
+#define NUM_CLS 100 // Número de clausulas na equação.
 
-// "ab", "!ab", "a!b", "!a!b" INCOERÊNCIA 1 = Se existe a tabela verdade toda de dois booleanos, nunca acontece
-// "ac", "bc", "a!c", "b!c", "!a!b" INCOERÊNCIA 2 = A e B precisam ser 1 obrigatoriamente, C se alterna e os obriga a serem
-// "ab", "bc", "ac", "!a!b", "!b!c", "!a!c" INCOERÊNCIA 3 = Se são completamente opostos
-// 
 // Vetor de chars denota todas as cláusulas.
 char *operacoes_t[] = {
   "ab", "!ab", "a!b", "!a!b"
 };
 
-// Função para testar a função dentro de cada cláusula.
-bool funcao_cls(bool *b, int n){
-    bool res = 0;
-    for(int i = 0; i < n; i++){
-        res = res || b[i];
-    }
-    return res;
-}
+// "ab", "!ab", "a!b", "!a!b" INCOERÊNCIA 1 = Se existe a tabela verdade toda de dois booleanos, nunca acontece
+// "ac", "bc", "a!c", "b!c", "!a!b" INCOERÊNCIA 2 = A e B precisam ser 1 obrigatoriamente, C se alterna e os obriga a serem
+// "ab", "bc", "ac", "!a!b", "!b!c", "!a!c" INCOERÊNCIA 3 = Se são completamente opostos
 
 bool fitnessPop(bool **pop);
 int calcularFunc(bool *vet);
+bool funcao_cls(bool *b, int n);
 
 int main(void){
     srand(time(NULL)); // Declara a seed
@@ -106,5 +98,14 @@ int calcularFunc(bool *vet){
     }
 
     return fit;
+}
+
+// Função para testar a função dentro de cada cláusula.
+bool funcao_cls(bool *b, int n){
+    bool res = 0;
+    for(int i = 0; i < n; i++){
+        res = res || b[i];
+    }
+    return res;
 }
 
