@@ -4,8 +4,8 @@
 #include <time.h>
 
 #define LETRAS 4
-#define TERMOS 3
-#define ORS 5
+#define TERMOS 10
+#define ORS 2
 
 #define TAM_VARIAVEL 1
 
