@@ -3,10 +3,6 @@
 #include <stdbool.h>
 #include <time.h>
 
-#define VARIAVEIS 10
-#define ANDS 10
-#define ORS 3
-
 
 int rRand(int min, int max){
     return rand() % (max - min) + min;
@@ -15,11 +11,17 @@ int rRand(int min, int max){
 
 int main(int argc, char *argv[]) {
 
+    if(argc != 5) return 1;
+
     int n = atoi(argv[1]);
     if (n <= 0) {
         fprintf(stderr, "Deve ser um número positivo.\n");
         return 1;
     }
+
+    int VARIAVEIS = atoi(argv[2]);
+    int ANDS = atoi(argv[3]);
+    int ORS = atoi(argv[4]);
 
     srand(time(NULL));
 
