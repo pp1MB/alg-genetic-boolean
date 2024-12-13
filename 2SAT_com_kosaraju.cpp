@@ -3,6 +3,10 @@
 
 using namespace std;
 
+#define TAM_INI_CLAUS 100000
+#define TAM_INI_VAR 10000
+#define ADD_VAL 1000
+
 class TwoSAT {
 private:
     int numVars;
@@ -112,8 +116,8 @@ string generateRandomVariable(int n) {
 // Função para gerar arquivos de entrada e saída
 void generateTestCases(int numCases) {
     for (int t = 0; t < numCases; ++t) {
-        int n = rand() % (10 + t) + 1;     // Número de variáveis (1 a 10)
-        int m = rand() % (20 + 5*t) + 1;     // Número de cláusulas (1 a 20)
+        int n = rand() % (TAM_INI_VAR + t*ADD_VAL) + 1;     // Número de variáveis
+        int m = rand() % (TAM_INI_CLAUS + 5*t*ADD_VAL) + 1;     // Número de cláusulas
 
         TwoSAT solver(n);
 
