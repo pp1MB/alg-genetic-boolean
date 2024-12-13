@@ -3,9 +3,9 @@
 
 using namespace std;
 
-#define TAM_INI_CLAUS 1000
-#define TAM_INI_VAR 1000
-#define ADD_VAL 100
+#define TAM_INI_CLAUS 100
+#define TAM_INI_VAR 100
+#define ADD_VAL 10
 
 class TwoSAT {
 private:
