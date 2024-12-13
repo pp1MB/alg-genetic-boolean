@@ -31,8 +31,12 @@ python3 interface.py
 ```
 
 ## Como gerar casos teste
-Para gerar casos teste, com
-
+Para gerar casos teste para o caso de N cláusulas, M variáveis, use o bashScript na pasta CASOS_TESTE:
+```
+chmod +x geraCasos.sh
+./geraCasos.sh
+```
+Os casos serão salvos na pasta "entradas", dentro da pasta CASOS_TESTE.
 
 ## Autores
 - Dante Brito Lourenço - 15447326
