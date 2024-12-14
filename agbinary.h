@@ -11,4 +11,6 @@
 
     void single_mutation(bool *crom);
     void multiple_mutation(bool *crom, int tax);
+
+    void genocide(bool **pop, int bestindex);
 #endif

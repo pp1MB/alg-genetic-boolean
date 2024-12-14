@@ -37,8 +37,8 @@ int main(int argc, char **argv){
     glutDisplayFunc(display);
     glutReshapeFunc(reshape);
 
-    glutKeyboardFunc(keyboard);
-    // glutIdleFunc(idle);
+    // glutKeyboardFunc(keyboard);
+    glutIdleFunc(idle);
 
     // Initialize OpenGL settings
     initOpenGL();
@@ -85,10 +85,14 @@ bool fitnessPop(bool **pop){
             return true;
         }
 
-        if(fit[currentGen][i] > bestFit[currentGen]){
+        if(fit[currentGen][i] >= bestFit[currentGen]){
             bestFit[currentGen] = fit[currentGen][i];
             bestindex = i;
         }
+    }
+
+    if(currentGen > 3 && avgFit[currentGen] < avgFit[currentGen - 3] - 5){
+            genocide(pop, bestindex);
     }
 
     // printf("\nMelhor indivíduo: %d\n", bestFit[currentGen]); Debug
@@ -100,7 +104,8 @@ bool fitnessPop(bool **pop){
             continue;
 
         singlePoint_crossover(pop[bestindex], pop[i]);
-        multiple_mutation(pop[i], 5);
+        // twoPoint_crossover(pop[bestindex], pop[i]);
+        multiple_mutation(pop[i], 0.1);
     }
 
     return false;

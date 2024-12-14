@@ -3,6 +3,7 @@
 #include "agbinary.h"
 
 int var_global_size = 0;
+int pop_global_size = 0;
 
 bool **createPop(int pop_size, int var_size){
     bool **pop = (bool **) malloc(sizeof(bool *) * pop_size);
@@ -30,6 +31,7 @@ bool **createPop(int pop_size, int var_size){
     }
 
     var_global_size = var_size;
+    pop_global_size = pop_size;
     return pop;
 }
 
@@ -64,5 +66,16 @@ void multiple_mutation(bool *crom, int tax){
     for(int i = 0; i < var_global_size; i++){
         if(rand() % 100 <= tax)
             crom[rand() % var_global_size] = !crom[rand() % var_global_size];
+    }
+}
+
+void genocide(bool **pop, int bestindex){
+    for(int i = 0; i < pop_global_size; i++){
+        
+        if(i == bestindex)
+            continue;
+
+        for(int j = 0; j < var_global_size; j++)
+            pop[i][j] = rand() % 2;
     }
 }
